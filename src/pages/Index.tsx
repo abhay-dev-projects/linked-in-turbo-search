@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,6 +30,7 @@ import {
   Play,
   ChevronRight
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [filterName, setFilterName] = useState("");
@@ -104,15 +104,17 @@ const Index = () => {
                 <Chrome className="w-4 h-4 mr-2" />
                 Install Extension
               </Button>
-              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
-                Get Started
-              </Button>
+              <Link to="/dashboard">
+                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section - Redesigned */}
+      {/* Hero Section */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
         <div className="container mx-auto text-center max-w-6xl relative">
@@ -164,11 +166,13 @@ const Index = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl text-lg px-10 py-4 font-semibold">
-              <Chrome className="w-5 h-5 mr-2" />
-              Get Early Access
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/dashboard">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl text-lg px-10 py-4 font-semibold">
+                <Chrome className="w-5 h-5 mr-2" />
+                Get Early Access
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="border-slate-300 hover:border-blue-300 text-lg px-10 py-4 font-semibold">
               <Play className="w-5 h-5 mr-2" />
               Watch Demo
@@ -219,177 +223,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Product Showcase - Redesigned Dashboard */}
+      {/* Product Showcase */}
       <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-slate-100 text-slate-700 hover:bg-slate-200 border-0">Product Preview</Badge>
+            <Badge className="mb-4 bg-slate-100 text-slate-700 hover:bg-slate-200 border-0">Coming Soon</Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Your Professional Command Center</h2>
-            <p className="text-xl text-slate-600">A glimpse into the powerful dashboard that will revolutionize your job search strategy</p>
+            <p className="text-xl text-slate-600">Experience the power of intelligent job search automation</p>
           </div>
 
           <Card className="shadow-2xl border-0 overflow-hidden bg-white">
-            <CardHeader className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="flex items-center text-2xl mb-2">
-                    <Settings className="w-6 h-6 mr-3" />
-                    LinkedInBoost Dashboard
-                  </CardTitle>
-                  <CardDescription className="text-slate-300 text-lg">Intelligent job search automation at your fingertips</CardDescription>
-                </div>
-                <Badge className="bg-green-500 text-white px-3 py-1">
-                  <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
-                  Coming Soon
-                </Badge>
+            <CardContent className="p-12 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                <Settings className="w-12 h-12 text-white" />
               </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <Tabs defaultValue="filters" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-100 p-1 rounded-xl">
-                  <TabsTrigger value="filters" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm font-medium">Smart Filters</TabsTrigger>
-                  <TabsTrigger value="analytics" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm font-medium">Analytics Preview</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="filters" className="space-y-8">
-                  <div className="grid lg:grid-cols-2 gap-8">
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-2xl font-semibold text-slate-900">Create Smart Filter</h3>
-                        <Badge variant="outline" className="border-blue-200 text-blue-700 bg-blue-50">
-                          <Sparkles className="w-3 h-3 mr-1" />
-                          AI Powered
-                        </Badge>
-                      </div>
-                      <div className="space-y-4">
-                        <div>
-                          <Label htmlFor="filter-name" className="text-sm font-medium text-slate-700">Filter Name</Label>
-                          <Input 
-                            id="filter-name"
-                            placeholder="e.g., Senior React Developer - Remote"
-                            value={filterName}
-                            onChange={(e) => setFilterName(e.target.value)}
-                            className="mt-2 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="keywords" className="text-sm font-medium text-slate-700">Smart Keywords</Label>
-                          <Input 
-                            id="keywords"
-                            placeholder="AI will suggest: react, typescript, remote, startup"
-                            value={keywords}
-                            onChange={(e) => setKeywords(e.target.value)}
-                            className="mt-2 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="time-filter" className="text-sm font-medium text-slate-700">Time Precision</Label>
-                          <Input 
-                            id="time-filter"
-                            placeholder="Get notified within minutes of posting"
-                            value={timeFilter}
-                            onChange={(e) => setTimeFilter(e.target.value)}
-                            className="mt-2 border-slate-200 focus:border-blue-500 focus:ring-blue-500"
-                          />
-                        </div>
-                        <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg">
-                          <BookmarkPlus className="w-4 h-4 mr-2" />
-                          Create Smart Filter
-                        </Button>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-6">
-                      <h3 className="text-2xl font-semibold text-slate-900">Preview: Your Filters</h3>
-                      <div className="space-y-4">
-                        {savedFilters.map((filter, index) => (
-                          <Card key={index} className="p-6 hover:shadow-lg transition-all duration-200 border-slate-200 hover:border-blue-200 bg-gradient-to-r from-white to-slate-50 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-bl-full"></div>
-                            <div className="flex justify-between items-start relative">
-                              <div className="flex-1">
-                                <div className="flex items-center mb-2">
-                                  <h4 className="font-semibold text-slate-900 text-lg">{filter.name}</h4>
-                                  <Badge className="ml-2 bg-green-100 text-green-700 border-green-200">Active</Badge>
-                                </div>
-                                <p className="text-slate-600 mb-3">{filter.keywords}</p>
-                                <div className="flex items-center space-x-2">
-                                  <Badge variant="outline" className="border-blue-200 text-blue-700 bg-blue-50">
-                                    <Clock className="w-3 h-3 mr-1" />
-                                    Real-time
-                                  </Badge>
-                                  <Badge variant="outline" className="border-slate-200 text-slate-600">
-                                    {filter.experience}
-                                  </Badge>
-                                </div>
-                              </div>
-                              <Button size="sm" className="ml-4 bg-blue-600 text-white hover:bg-blue-700">
-                                <ChevronRight className="w-4 h-4" />
-                              </Button>
-                            </div>
-                          </Card>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-                
-                <TabsContent value="analytics" className="space-y-8">
-                  <div className="grid lg:grid-cols-3 gap-6">
-                    <Card className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-100">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                          <BarChart3 className="w-6 h-6 text-white" />
-                        </div>
-                        <Badge className="bg-blue-100 text-blue-700">Live Data</Badge>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-3xl font-bold text-slate-900">Real-time</div>
-                        <div className="text-slate-600">Job Matching</div>
-                        <div className="text-sm text-slate-500">AI-powered relevance scoring</div>
-                      </div>
-                    </Card>
-
-                    <Card className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-green-100">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                          <Target className="w-6 h-6 text-white" />
-                        </div>
-                        <Badge className="bg-green-100 text-green-700">Smart</Badge>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-3xl font-bold text-slate-900">Precision</div>
-                        <div className="text-slate-600">Targeting</div>
-                        <div className="text-sm text-slate-500">Only relevant opportunities</div>
-                      </div>
-                    </Card>
-
-                    <Card className="p-6 bg-gradient-to-br from-purple-50 to-violet-50 border-purple-100">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-                          <Zap className="w-6 h-6 text-white" />
-                        </div>
-                        <Badge className="bg-purple-100 text-purple-700">Instant</Badge>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-3xl font-bold text-slate-900">Lightning</div>
-                        <div className="text-slate-600">Fast Alerts</div>
-                        <div className="text-sm text-slate-500">Never miss an opportunity</div>
-                      </div>
-                    </Card>
-                  </div>
-
-                  <Card className="p-8 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-                    <div className="text-center">
-                      <Rocket className="w-16 h-16 mx-auto mb-4 text-blue-400" />
-                      <h3 className="text-2xl font-bold mb-2">Coming Soon: Advanced Analytics</h3>
-                      <p className="text-slate-300 mb-6">Track your job search performance, analyze market trends, and optimize your strategy with AI-powered insights.</p>
-                      <Button className="bg-white text-slate-900 hover:bg-slate-100">
-                        Join Waitlist for Updates
-                      </Button>
-                    </div>
-                  </Card>
-                </TabsContent>
-              </Tabs>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Professional Dashboard</h3>
+              <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+                Manage your job search with intelligent filters, professional message templates, and real-time analytics.
+              </p>
+              <Link to="/dashboard">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                  <ArrowRight className="w-5 h-5 mr-2" />
+                  Explore Dashboard
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
@@ -448,11 +305,13 @@ const Index = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl text-lg px-10 py-4 font-semibold">
-              <Chrome className="w-5 h-5 mr-2" />
-              Get Early Access
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/dashboard">
+              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl text-lg px-10 py-4 font-semibold">
+                <Chrome className="w-5 h-5 mr-2" />
+                Get Early Access
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg px-10 py-4 backdrop-blur-sm">
               <Shield className="w-5 h-5 mr-2" />
               Learn More
